@@ -184,3 +184,26 @@ button:hover {
     }
 
 }
+/* ===============================
+   DASHBOARD MOBILE SIZE FIX
+   =============================== */
+
+/* Login stays centered */
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dashboards should NOT be vertically centered */
+.dashboard-page {
+    align-items: flex-start;
+    padding-top: 24px;
+}
+
+/* Make dashboard cards feel large on phone */
+@media (max-width: 600px) {
+    .dashboard-page .card {
+        min-height: 70vh;
+    }
+}
