@@ -2,20 +2,61 @@
 <html>
 <head>
     <title>HOD Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h2 class="dashboard-title">HOD Dashboard</h2>
+<header class="app-header">
+    HOD Dashboard
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
 
-    <h3>All Appointments</h3>
-    <ul id="list"></ul>
+<main class="page">
+    <div class="card">
+
+        <!-- BOOK APPOINTMENT -->
+        <h2>Book Appointment</h2>
+
+        <label>Subject</label>
+        <input type="text" id="subject">
+
+        <label>Date</label>
+        <input type="date" id="date">
+
+        <label>Time</label>
+        <input type="time" id="time">
+
+        <label>Book With</label>
+        <select id="with">
+            <option value="">Select</option>
+            <option value="staff">Staff</option>
+        </select>
+
+        <button onclick="bookAppointment('hod')">Book Appointment</button>
+        <p id="msg"></p>
+
+        <!-- CALENDAR VIEW -->
+        <h2 style="margin-top:25px;">Appointments Calendar</h2>
+        <div id="calendar"></div>
+
+    </div>
+</main>
+
+<!-- REMINDER BELL -->
+<div class="bell" onclick="toggleReminder()">🔔</div>
+<div class="reminder-panel" id="reminderPanel">
+    <h4>Upcoming Appointments</h4>
+    <div id="reminders"></div>
 </div>
 
 <script src="app.js"></script>
 <script>
-loadAppointments();
+checkAuth("hod");
+</script>
+
+<script>
+loadCalendar("hod");
 </script>
 
 </body>

@@ -4,20 +4,41 @@
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<div class="bell" onclick="toggleReminder()">🔔</div>
 
-<div class="container">
-    <h2 class="dashboard-title">Student Dashboard</h2>
-
-
-    <input type="text" id="subject" placeholder="Subject">
-    <input type="date" id="date">
-    <input type="time" id="time">
-
-    <button onclick="bookAppointment()">Book Appointment</button>
-    <p id="msg"></p>
+<div class="reminder-panel" id="reminderPanel">
+    <h4>Upcoming Appointments</h4>
+    <div id="reminders"></div>
 </div>
 
-<script src="app.js"></script>
+<body>
+    <header class="app-header">
+        Student Dashboard
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+    <main class="page">
+        <div class="card">
+            <h2>Book Appointment</h2>
+
+            <label>Subject</label>
+            <input type="text" id="subject" placeholder="Eg: Project Discussion">
+
+            <label>Date</label>
+            <input type="date" id="date">
+
+            <label>Time</label>
+            <input type="time" id="time">
+
+            <button onclick="bookAppointment()">Book Appointment</button>
+            <p id="msg"></p>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+<script>
+checkAuth("student");
+</script>
+
 </body>
 </html>

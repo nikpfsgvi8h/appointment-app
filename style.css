@@ -1,70 +1,87 @@
-/* ---------- GLOBAL ---------- */
+/* ---------- RESET ---------- */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* ---------- BODY ---------- */
 body {
-    margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e9efff, #f8f9ff);
+    background: #f4f6fb;
     min-height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.app-header {
+    background: #4a6cff;
+    color: white;
+    padding: 18px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ---------- PAGE LAYOUT ---------- */
+.page {
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 30px 16px;
 }
 
-/* ---------- CARD CONTAINER ---------- */
-.container {
-    background: #ffffff;
-    width: 90%;
-    max-width: 380px;
+/* ---------- CARD ---------- */
+.card {
+    background: white;
+    width: 100%;
+    max-width: 420px;
     padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* ---------- HEADINGS ---------- */
-h2 {
+.card h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #2c3e50;
 }
 
-h3 {
-    margin-top: 20px;
-    color: #34495e;
+/* ---------- LABELS ---------- */
+label {
+    font-size: 13px;
+    color: #555;
+    margin-top: 12px;
+    display: block;
 }
 
 /* ---------- INPUTS ---------- */
-input,
-select {
+input, select {
     width: 100%;
     padding: 12px;
-    margin-top: 12px;
+    margin-top: 6px;
     border-radius: 8px;
     border: 1px solid #dcdcdc;
     font-size: 14px;
+    background: #fafbff;
 }
 
-input:focus,
-select:focus {
+input:focus, select:focus {
     outline: none;
     border-color: #4a6cff;
 }
 
 /* ---------- BUTTON ---------- */
 button {
+    margin-top: 22px;
     width: 100%;
     padding: 12px;
-    margin-top: 18px;
+    background: #4a6cff;
     border: none;
     border-radius: 8px;
-    background: #4a6cff;
     color: white;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
 }
 
 button:hover {
@@ -76,29 +93,98 @@ button:hover {
     margin-top: 12px;
     text-align: center;
     color: green;
-    font-size: 14px;
 }
 
-/* ---------- LIST (STAFF / HOD) ---------- */
+/* ---------- LIST ---------- */
 ul {
     list-style: none;
-    padding: 0;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 ul li {
     background: #f4f6ff;
-    margin-bottom: 10px;
     padding: 12px;
     border-radius: 8px;
+    margin-bottom: 10px;
     font-size: 14px;
-    color: #2c3e50;
 }
 
-/* ---------- DASHBOARD TITLE ---------- */
-.dashboard-title {
-    text-align: center;
-    font-weight: bold;
+.bell {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4a6cff;
+    color: white;
+    padding: 14px;
+    border-radius: 50%;
     font-size: 18px;
-    color: #4a6cff;
+    cursor: pointer;
+}
+
+.reminder-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: white;
+    width: 250px;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    display: none;
+}
+
+.reminder-panel.show {
+    display: block;
+}
+
+.reminder-panel h4 {
+    margin-bottom: 10px;
+}
+
+.calendar-card {
+    background: #f9fbff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.calendar-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.calendar-item button {
+    margin-top: 6px;
+    margin-right: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+.calendar-item button:first-of-type {
+    background: #28a745;
+}
+
+.calendar-item button:last-of-type {
+    background: #dc3545;
+}
+
+.logout-btn {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: rgba(255,255,255,0.2);
 }
