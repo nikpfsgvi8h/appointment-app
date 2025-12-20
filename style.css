@@ -1,29 +1,104 @@
+/* ---------- GLOBAL ---------- */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial;
-    background: #f2f2f2;
-    height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e9efff, #f8f9ff);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* ---------- CARD CONTAINER ---------- */
 .container {
-    background: white;
-    padding: 20px;
+    background: #ffffff;
     width: 90%;
-    max-width: 350px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 380px;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-input, select, button {
+/* ---------- HEADINGS ---------- */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #34495e;
+}
+
+/* ---------- INPUTS ---------- */
+input,
+select {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
 }
 
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4a6cff;
+}
+
+/* ---------- BUTTON ---------- */
 button {
-    background: #007bff;
-    color: white;
+    width: 100%;
+    padding: 12px;
+    margin-top: 18px;
     border: none;
+    border-radius: 8px;
+    background: #4a6cff;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #3958d6;
+}
+
+/* ---------- MESSAGE ---------- */
+#msg {
+    margin-top: 12px;
+    text-align: center;
+    color: green;
+    font-size: 14px;
+}
+
+/* ---------- LIST (STAFF / HOD) ---------- */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 16px;
+}
+
+ul li {
+    background: #f4f6ff;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+/* ---------- DASHBOARD TITLE ---------- */
+.dashboard-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #4a6cff;
 }
