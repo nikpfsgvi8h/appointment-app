@@ -22,30 +22,58 @@ body {
     font-weight: 600;
 }
 
-/* ===== PAGE WRAPPER ===== */
-/* SAME BEHAVIOR AS LOGIN PAGE */
+/* ===== PAGE BASE ===== */
 .page {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* KEEP CENTERED LIKE LOGIN */
     min-height: calc(100vh - 64px);
     padding: 16px;
 }
 
-/* ===== CARD ===== */
-/* ONLY CHANGE: MIN HEIGHT to match login visual size */
-.card {
+/* =========================
+   LOGIN PAGE (CARD STYLE)
+   ========================= */
+.page:not(.full-screen) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page:not(.full-screen) .card {
     background: white;
     width: 100%;
     max-width: 420px;
-    min-height: 520px; /* ⭐ KEY FIX: forces same visual size */
     padding: 24px;
     border-radius: 16px;
     box-shadow: 0 12px 28px rgba(0,0,0,0.12);
 }
 
-/* ===== CARD HEADINGS ===== */
-.card h2 {
+/* =========================
+   FULL-SCREEN DASHBOARDS
+   ========================= */
+.full-screen {
+    display: block;
+}
+
+/* dashboard content wrapper */
+.full-screen .content {
+    background: white;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* make dashboards feel FULL on phone */
+@media (max-width: 600px) {
+    .full-screen .content {
+        min-height: 85vh;
+        padding: 24px;
+        border-radius: 22px;
+    }
+}
+
+/* ===== HEADINGS ===== */
+h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #1f2937;
@@ -77,7 +105,7 @@ select:focus {
     border-color: #4a6cff;
 }
 
-/* ===== PRIMARY BUTTON ===== */
+/* ===== BUTTON ===== */
 button {
     width: 100%;
     padding: 12px;
@@ -94,7 +122,7 @@ button:hover {
     background: #3b5bdb;
 }
 
-/* ===== MESSAGE TEXT ===== */
+/* ===== MESSAGE ===== */
 #msg {
     margin-top: 12px;
     text-align: center;
@@ -102,7 +130,11 @@ button:hover {
     color: green;
 }
 
-/* ===== CALENDAR VIEW ===== */
+/* ===== CALENDAR ===== */
+#calendar {
+    margin-top: 20px;
+}
+
 .calendar-card {
     background: #f4f6ff;
     padding: 12px;
@@ -123,7 +155,7 @@ button:hover {
     font-size: 14px;
 }
 
-/* ===== FLOATING ACTION ICON STACK ===== */
+/* ===== FLOATING ACTION ICONS ===== */
 .action-icons {
     position: fixed;
     bottom: 20px;
@@ -131,23 +163,25 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 50;
+    z-index: 100;
 }
 
-/* ===== ICONS ===== */
 .bell,
 .logout-icon {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #4a6cff;
     color: white;
-    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.bell {
+    background: #4a6cff;
 }
 
 .logout-icon {
@@ -159,8 +193,8 @@ button:hover {
     position: fixed;
     bottom: 90px;
     right: 20px;
-    background: white;
     width: 260px;
+    background: white;
     padding: 14px;
     border-radius: 12px;
     box-shadow: 0 12px 28px rgba(0,0,0,0.2);
@@ -170,40 +204,4 @@ button:hover {
 .reminder-panel h4 {
     margin-bottom: 10px;
     color: #1f2937;
-}
-/* ===== MOBILE FIX: MAKE DASHBOARDS FEEL LARGE ===== */
-@media (max-width: 600px) {
-
-    .page {
-        align-items: flex-start;   /* stop vertical centering */
-        padding-top: 32px;         /* same visual start as login */
-    }
-
-    .card {
-        min-height: 75vh;          /* fills most of phone screen */
-    }
-
-}
-/* ===============================
-   DASHBOARD MOBILE SIZE FIX
-   =============================== */
-
-/* Login stays centered */
-.page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Dashboards should NOT be vertically centered */
-.dashboard-page {
-    align-items: flex-start;
-    padding-top: 24px;
-}
-
-/* Make dashboard cards feel large on phone */
-@media (max-width: 600px) {
-    .dashboard-page .card {
-        min-height: 70vh;
-    }
 }
