@@ -171,3 +171,16 @@ button:hover {
     margin-bottom: 10px;
     color: #1f2937;
 }
+/* ===== MOBILE FIX: MAKE DASHBOARDS FEEL LARGE ===== */
+@media (max-width: 600px) {
+
+    .page {
+        align-items: flex-start;   /* stop vertical centering */
+        padding-top: 32px;         /* same visual start as login */
+    }
+
+    .card {
+        min-height: 75vh;          /* fills most of phone screen */
+    }
+
+}
