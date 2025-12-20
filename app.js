@@ -7,26 +7,48 @@ function login() {
         return;
     }
 
-    if (role === "hod") {
-        window.location.href = "hod.html";
-    } else if (role === "staff") {
-        window.location.href = "staff.html";
-    } else if (role === "student") {
-        window.location.href = "student.html";
-    }
+    if (role === "student") location.href = "student.html";
+    if (role === "staff") location.href = "staff.html";
+    if (role === "hod") location.href = "hod.html";
 }
 
+// STUDENT: BOOK APPOINTMENT
 function bookAppointment() {
     const subject = document.getElementById("subject").value;
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
 
-    if (subject === "" || date === "" || time === "") {
-        document.getElementById("msg").innerText =
-            "Please fill all fields";
+    if (!subject || !date || !time) {
+        document.getElementById("msg").innerText = "Fill all fields";
         return;
     }
 
-    document.getElementById("msg").innerText =
-        "Appointment booked successfully!";
+    let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+
+    appointments.push({ subject, date, time });
+
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+
+    document.getElementById("msg").innerText = "Appointment booked!";
+}
+
+// STAFF & HOD: VIEW APPOINTMENTS
+function loadAppointments() {
+    let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    let list = document.getElementById("list");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    if (appointments.length === 0) {
+        list.innerHTML = "<li>No appointments found</li>";
+        return;
+    }
+
+    appointments.forEach(a => {
+        let li = document.createElement("li");
+        li.innerText = `${a.subject} | ${a.date} | ${a.time}`;
+        list.appendChild(li);
+    });
 }
