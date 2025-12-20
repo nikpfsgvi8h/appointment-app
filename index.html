@@ -28,7 +28,8 @@
 <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
-    .then(() => console.log("Service Worker Registered"));
+    .then(() => console.log("Service Worker registered"))
+    .catch(err => console.log("SW error", err));
 }
 </script>
 
