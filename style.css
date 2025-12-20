@@ -188,3 +188,20 @@ ul li {
 .logout-btn:hover {
     background: rgba(255,255,255,0.2);
 }
+
+.logout-icon {
+    position: fixed;
+    bottom: 80px;        /* sits below bell */
+    right: 20px;
+    background: #dc3545;
+    color: white;
+    padding: 14px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.logout-icon:hover {
+    background: #b02a37;
+}
