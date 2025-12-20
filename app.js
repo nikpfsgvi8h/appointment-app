@@ -15,3 +15,18 @@ function login() {
         window.location.href = "student.html";
     }
 }
+
+function bookAppointment() {
+    const subject = document.getElementById("subject").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    if (subject === "" || date === "" || time === "") {
+        document.getElementById("msg").innerText =
+            "Please fill all fields";
+        return;
+    }
+
+    document.getElementById("msg").innerText =
+        "Appointment booked successfully!";
+}
