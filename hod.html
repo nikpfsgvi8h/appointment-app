@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>HOD Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="app-header">
@@ -14,7 +14,6 @@
 <main class="page">
     <div class="card">
 
-        <!-- BOOK APPOINTMENT -->
         <h2>Book Appointment</h2>
 
         <label>Subject</label>
@@ -35,17 +34,19 @@
         <button onclick="bookAppointment('hod')">Book Appointment</button>
         <p id="msg"></p>
 
-        <!-- CALENDAR VIEW -->
-        <h2 style="margin-top:25px;">Appointments Calendar</h2>
+        <h2 style="margin-top:24px;">Appointments Calendar</h2>
         <div id="calendar"></div>
 
     </div>
 </main>
 
-<!-- REMINDER BELL -->
-<div class="bell" onclick="toggleReminder()">🔔</div>
-<div class="logout-icon" onclick="logout()">➜]</div>
+<!-- FLOATING ACTION ICONS -->
+<div class="action-icons">
+    <div class="bell" onclick="toggleReminder()">🔔</div>
+    <div class="logout-icon" onclick="logout()">➜]</div>
+</div>
 
+<!-- REMINDER PANEL -->
 <div class="reminder-panel" id="reminderPanel">
     <h4>Upcoming Appointments</h4>
     <div id="reminders"></div>
@@ -54,11 +55,9 @@
 <script src="app.js"></script>
 <script>
 checkAuth("hod");
-</script>
-
-<script>
 loadCalendar("hod");
 </script>
 
 </body>
 </html>
+
