@@ -180,4 +180,7 @@ function checkAuth(requiredRole) {
         location.href = "index.html";
     }
 }
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
 
