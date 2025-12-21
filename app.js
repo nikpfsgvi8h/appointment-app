@@ -23,42 +23,21 @@ function bookAppointment(role) {
     const subject = document.getElementById("subject").value;
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
-    const withWhom = document.getElementById("with")?.value || "any";
+    const withWhom = document.getElementById("with")?.value || "";
 
     if (!subject || !date || !time) {
-        document.getElementById("msg").innerText = "Please fill all fields";
+        alert("Fill all fields");
         return;
     }
 
-    // ROLE RULES
-    if (role === "staff" && withWhom !== "hod") {
-        document.getElementById("msg").innerText =
-            "Staff can book appointments only with HOD";
-        return;
-    }
+    const appointment = { role, subject, date, time, with: withWhom };
 
-    if (role === "hod" && withWhom !== "staff") {
-        document.getElementById("msg").innerText =
-            "HOD can book appointments only with Staff";
-        return;
-    }
-
-    let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-
-   appointments.push({
-    subject,
-    date,
-    time,
-    bookedBy: role,
-    bookedWith: withWhom,
-    status: "Pending"
-});
-
-
+    const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    appointments.push(appointment);
     localStorage.setItem("appointments", JSON.stringify(appointments));
 
-    document.getElementById("msg").innerText =
-        "Appointment booked successfully!";
+    document.getElementById("msg").innerText = "Appointment booked!";
+    loadCalendarGrid();
 }
 // STAFF & HOD: VIEW APPOINTMENTS
 function loadAppointments() {
@@ -142,22 +121,17 @@ function loadCalendar(role) {
 
 function toggleReminder() {
     const panel = document.getElementById("reminderPanel");
-    panel.classList.toggle("show");
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
 
     const reminders = document.getElementById("reminders");
     reminders.innerHTML = "";
 
-    const data = JSON.parse(localStorage.getItem("appointments")) || [];
+    const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
 
-    if (data.length === 0) {
-        reminders.innerHTML = "<p>No upcoming appointments</p>";
-        return;
-    }
-
-    data.slice(-3).forEach(a => {
-        const div = document.createElement("div");
-        div.innerText = `${a.subject} on ${a.date} at ${a.time}`;
-        reminders.appendChild(div);
+    appointments.forEach(a => {
+        const p = document.createElement("p");
+        p.innerText = `${a.subject} • ${a.date} • ${a.time}`;
+        reminders.appendChild(p);
     });
 }
 
@@ -182,5 +156,26 @@ function checkAuth(requiredRole) {
 }
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
+}
+function loadCalendarGrid() {
+    const calendar = document.getElementById("calendarGrid");
+    if (!calendar) return;
+
+    calendar.innerHTML = "";
+    const daysInMonth = 30;
+
+    const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        const div = document.createElement("div");
+        div.className = "calendar-day";
+        div.innerText = day;
+
+        if (appointments.some(a => a.date.endsWith(`-${String(day).padStart(2,'0')}`))) {
+            div.classList.add("has-event");
+        }
+
+        calendar.appendChild(div);
+    }
 }
 

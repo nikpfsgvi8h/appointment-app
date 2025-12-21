@@ -157,4 +157,32 @@ button:hover {
     margin-bottom: 12px;
     color: #4a6cff;
 }
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.calendar-day {
+    padding: 12px;
+    background: #f4f6ff;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.calendar-day.has-event {
+    background: #4a6cff;
+    color: white;
+}
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.action-buttons button {
+    flex: 1;
+}
 

@@ -28,9 +28,20 @@
 
         <label>Time</label>
         <input type="time" id="time">
+<label>Schedule With</label>
+<select id="with">
+    <option value="">Select</option>
+    <option value="staff">Staff</option>
+    <option value="hod">HOD</option>
+</select>
+
 
         <button onclick="bookAppointment('student')">Book Appointment</button>
         <p id="msg"></p>
+
+<h2>Calendar</h2>
+<div id="calendarGrid" class="calendar-grid"></div>
+
     </div>
 </main>
 
@@ -53,4 +64,9 @@ checkAuth("student");
 
 </body>
 </html>
+<script src="app.js"></script>
+<script>
+checkAuth("student");
+loadCalendarGrid();   // ✅ HERE
+</script>
 

@@ -40,6 +40,15 @@
 
         <h2 style="margin-top:24px;">Appointments Calendar</h2>
         <div id="calendar"></div>
+<div class="action-buttons">
+    <button onclick="approve()">Approve</button>
+    <button onclick="reject()">Reject</button>
+</div>
+
+
+<h2>Calendar</h2>
+<div id="calendarGrid" class="calendar-grid"></div>
+
 
     </div>
 </main>
@@ -65,3 +74,8 @@ loadCalendar("hod");
 </body>
 </html>
 
+<script src="app.js"></script>
+<script>
+checkAuth("hod");
+loadCalendarGrid();   // ✅ HERE
+</script>
