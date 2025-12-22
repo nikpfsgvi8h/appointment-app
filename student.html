@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#4a6cff">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+  <title>Student</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="app-header">
-    Student Dashboard
-</header>
+<div id="loading-screen">
+  <div class="loader"></div>
+  <p>Loading...</p>
+</div>
 
-<main class="page full-screen">
-    <div class="content">
+<header class="app-header">Student Dashboard</header>
 
-        <h2>Book Appointment</h2>
+<main class="page">
+  <div class="card">
 
-        <label>Subject</label>
-        <input type="text" id="subject" placeholder="Eg: Project Discussion">
+    <h2>Book Appointment</h2>
 
-        <label>Date</label>
-        <input type="date" id="date">
+    <label>Subject</label>
+    <input id="subject">
 
-        <label>Time</label>
-        <input type="time" id="time">
-<label>Schedule With</label>
-<select id="with">
-    <option value="">Select</option>
-    <option value="staff">Staff</option>
-    <option value="hod">HOD</option>
-</select>
+    <label>Date</label>
+    <input type="date" id="date">
 
+    <label>Time</label>
+    <input type="time" id="time">
 
-        <button onclick="bookAppointment('student')">Book Appointment</button>
-        <p id="msg"></p>
+    <label>Schedule With</label>
+    <select id="with">
+      <option value="">Select</option>
+      <option value="staff">Staff</option>
+      <option value="hod">HOD</option>
+    </select>
 
-<h2>Calendar</h2>
-<div id="calendarGrid" class="calendar-grid"></div>
+    <button onclick="bookAppointment('student')">Book</button>
+    <p id="msg"></p>
 
-    </div>
+    <h2>Calendar</h2>
+    <div id="calendarGrid" class="calendar-grid"></div>
+
+  </div>
 </main>
 
-<!-- FLOATING ACTION ICONS -->
-<div class="action-icons">
-    <div class="bell" onclick="toggleReminder()">🔔</div>
-    <div class="logout-icon" onclick="logout()">➜]</div>
+<div class="bell" onclick="toggleReminder()">
+  🔔<span id="bell-count">0</span>
 </div>
 
-<!-- REMINDER PANEL -->
-<div class="reminder-panel" id="reminderPanel">
-    <h4>Upcoming Appointments</h4>
-    <div id="reminders"></div>
-</div>
+<div class="reminder-panel" id="reminderPanel"></div>
 
 <script src="app.js"></script>
 <script>
 checkAuth("student");
+loadCalendarGrid();
+loadReminders();
+window.onload = () =>
+  document.getElementById("loading-screen").style.display = "none";
 </script>
 
 </body>
 </html>
-<script src="app.js"></script>
-<script>
-checkAuth("student");
-loadCalendarGrid();   // ✅ HERE
-</script>
-
