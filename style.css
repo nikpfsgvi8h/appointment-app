@@ -1,188 +1,216 @@
 /* ===== RESET ===== */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 /* ===== BODY ===== */
 body {
-    background: #f2f5fb;
-    min-height: 100vh;
+  background: #f2f5fb;
+  color: #1f2937;
 }
 
-/* ===== TOP BAR ===== */
+/* ===== HEADER ===== */
 .app-header {
-    background: #4a6cff;
-    color: white;
-    padding: 16px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
+  background: #4f6ef7;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
-/* ===== PAGE WRAPPER ===== */
+/* ===== PAGE ===== */
 .page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 56px);
-    padding: 16px;
+  display: flex;
+  justify-content: center;
+  padding: 20px 14px 80px;
 }
 
-/* ===== LOGIN CARD (UNCHANGED) ===== */
-.page:not(.full-screen) .card {
-    background: white;
-    width: 100%;
-    max-width: 420px;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
-
-/* ===== FULLSCREEN DASHBOARD ===== */
-.page.full-screen {
-    align-items: flex-start;
-}
-
-.page.full-screen .card {
-    background: white;
-    width: 100%;
-    max-width: 100%;
-    min-height: calc(100vh - 88px);
-    padding: 24px;
-    border-radius: 0;
-    box-shadow: none;
+/* ===== CARD ===== */
+.card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 26px 22px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 /* ===== HEADINGS ===== */
 .card h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #1f2937;
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* ===== LABELS ===== */
 label {
-    display: block;
-    font-size: 13px;
-    color: #4b5563;
-    margin-bottom: 6px;
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #4b5563;
 }
 
 /* ===== INPUTS ===== */
 input,
 select {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
-    font-size: 15px;
-    background: #f9fafb;
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: #f9fafb;
 }
 
 input:focus,
 select:focus {
-    outline: none;
-    border-color: #4a6cff;
+  outline: none;
+  border-color: #4f6ef7;
+  background: white;
 }
 
 /* ===== BUTTON ===== */
 button {
-    width: 100%;
-    padding: 14px;
-    background: #4a6cff;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+  background: #4f6ef7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-button:hover {
-    background: #3b5bdb;
+button:active {
+  transform: scale(0.98);
 }
 
 /* ===== MESSAGE ===== */
 #msg {
-    margin-top: 12px;
-    text-align: center;
-    font-size: 14px;
-    color: green;
+  margin-top: 14px;
+  text-align: center;
+  font-size: 14px;
+  color: #059669;
 }
 
-/* ===== FLOATING ICONS ===== */
-.action-icons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 100;
+/* ===== LOADING SCREEN ===== */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #f4f7ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
-.bell,
-.logout-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: white;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
+#loading-screen p {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #dbe3ff;
+  border-top: 5px solid #4f6ef7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== CALENDAR GRID ===== */
+.calendar-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  padding: 14px 0;
+  background: #eef2ff;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calendar-day.has-event {
+  background: #4f6ef7;
+  color: white;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  flex: 1;
+}
+
+/* ===== APPROVE / REJECT ANIMATION ===== */
+.fade-out {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: all 0.3s ease;
+}
+
+/* ===== BELL ICON ===== */
+.bell {
+  position: fixed;
+  bottom: 92px;
+  right: 18px;
+  background: white;
+  border-radius: 50%;
+  padding: 14px;
+  font-size: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* ===== BELL BADGE ===== */
+#bell-count {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 999px;
 }
 
 /* ===== REMINDER PANEL ===== */
 .reminder-panel {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 280px;
-    background: white;
-    border-radius: 14px;
-    padding: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: none;
-    z-index: 100;
+  position: fixed;
+  bottom: 150px;
+  right: 18px;
+  width: 260px;
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  display: none;
 }
 
-.reminder-panel h4 {
-    margin-bottom: 12px;
-    color: #4a6cff;
+.reminder-panel p {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #374151;
 }
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-top: 16px;
-}
-
-.calendar-day {
-    padding: 12px;
-    background: #f4f6ff;
-    text-align: center;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.calendar-day.has-event {
-    background: #4a6cff;
-    color: white;
-}
-.action-buttons {
-    display: flex;
-    gap: 16px;
-    margin-top: 12px;
-}
-
-.action-buttons button {
-    flex: 1;
-}
-
