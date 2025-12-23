@@ -1,9 +1,17 @@
 function login() {
+  const email = document.getElementById("email").value;
   const role = document.getElementById("role").value;
-  if (!role) return alert("Select role");
+
+  if (!email || !role) {
+    alert("Enter email and select role");
+    return;
+  }
+
+  localStorage.setItem("email", email);
   localStorage.setItem("role", role);
   location.href = role + ".html";
 }
+
 
 function checkAuth(role) {
   if (localStorage.getItem("role") !== role)
