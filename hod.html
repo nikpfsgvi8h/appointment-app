@@ -45,9 +45,13 @@
     </div>
   </div>
 </main>
+<div class="fab-stack">
+  <div class="fab bell" onclick="toggleReminder()">
+    🔔<span id="bell-count">0</span>
+  </div>
+  <div class="fab logout" onclick="logout()">➜]</div>
+</div>
 
-<div class="bell" onclick="toggleReminder()">🔔<span id="bell-count">0</span></div>
-<div class="reminder-panel" id="reminderPanel"></div>
 
 <script src="app.js"></script>
 <script>

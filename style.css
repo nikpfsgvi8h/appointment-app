@@ -28,7 +28,7 @@ body {
 .page {
   display: flex;
   justify-content: center;
-  padding: 20px 14px 80px;
+  padding: 20px 14px 100px;
 }
 
 /* ===== CARD ===== */
@@ -173,24 +173,37 @@ button:active {
   transition: all 0.3s ease;
 }
 
-/* ===== BELL ICON ===== */
-.bell {
+/* ===== FLOATING ACTION BUTTON STACK ===== */
+.fab-stack {
   position: fixed;
-  bottom: 92px;
+  bottom: 24px;
   right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 999;
+}
+
+/* ===== FAB BUTTON ===== */
+.fab {
+  width: 54px;
+  height: 54px;
   background: white;
   border-radius: 50%;
-  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 22px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  cursor: pointer;
   position: relative;
 }
 
 /* ===== BELL BADGE ===== */
 #bell-count {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 6px;
+  right: 6px;
   background: #ef4444;
   color: white;
   font-size: 11px;
@@ -201,7 +214,7 @@ button:active {
 /* ===== REMINDER PANEL ===== */
 .reminder-panel {
   position: fixed;
-  bottom: 150px;
+  bottom: 110px;
   right: 18px;
   width: 260px;
   background: white;
@@ -216,3 +229,4 @@ button:active {
   margin-bottom: 10px;
   color: #374151;
 }
+ 
