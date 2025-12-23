@@ -1,29 +1,20 @@
 function login() {
-  const role = document.getElementById("role")?.value;
+  const role = document.getElementById("role").value;
   if (!role) return alert("Select role");
   localStorage.setItem("role", role);
   location.href = role + ".html";
 }
 
 function checkAuth(role) {
-  if (localStorage.getItem("role") !== role) {
+  if (localStorage.getItem("role") !== role)
     location.href = "index.html";
-  }
 }
 
 function bookAppointment() {
-  const subjectEl = document.getElementById("subject");
-  const dateEl = document.getElementById("date");
-  const timeEl = document.getElementById("time");
-  const withEl = document.getElementById("with");
-  const msgEl = document.getElementById("msg");
-
-  if (!subjectEl || !dateEl || !timeEl) return;
-
-  const subject = subjectEl.value;
-  const date = dateEl.value;
-  const time = timeEl.value;
-  const withWhom = withEl ? withEl.value : "";
+  const subject = document.getElementById("subject").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const withWhom = document.getElementById("with")?.value || "";
 
   if (!subject || !date || !time) {
     alert("Fill all fields");
@@ -33,18 +24,11 @@ function bookAppointment() {
   const notifyAt = new Date(`${date}T${time}`).getTime() - 15 * 60000;
 
   const data = JSON.parse(localStorage.getItem("appointments")) || [];
-  data.push({
-    subject,
-    date,
-    time,
-    with: withWhom,
-    notifyAt,
-    notified: false
-  });
+  data.push({ subject, date, time, with: withWhom, notifyAt, notified: false });
 
   localStorage.setItem("appointments", JSON.stringify(data));
 
-  if (msgEl) msgEl.innerText = "Appointment booked";
+  document.getElementById("msg").innerText = "Appointment booked";
   loadCalendarGrid();
   loadReminders();
 }
@@ -61,7 +45,7 @@ function loadCalendarGrid() {
     d.className = "calendar-day";
     d.innerText = i;
 
-    if (data.some(a => a.date?.endsWith(`-${String(i).padStart(2, "0")}`))) {
+    if (data.some(a => a.date.endsWith(`-${String(i).padStart(2, "0")}`))) {
       d.classList.add("has-event");
     }
 
@@ -70,55 +54,45 @@ function loadCalendarGrid() {
 }
 
 function toggleReminder() {
-  const panel = document.getElementById("reminderPanel");
-  if (!panel) return;
-
-  panel.style.display =
-    panel.style.display === "block" ? "none" : "block";
+  const p = document.getElementById("reminderPanel");
+  if (!p) return;
+  p.style.display = p.style.display === "block" ? "none" : "block";
 }
 
 function loadReminders() {
-  const panel = document.getElementById("reminderPanel");
-  const countEl = document.getElementById("bellCount");
-  if (!panel) return;
-
   const data = JSON.parse(localStorage.getItem("appointments")) || [];
 
-  if (countEl) countEl.innerText = data.length;
+  const bell = document.getElementById("bell-count");
+  const panel = document.getElementById("reminderPanel");
 
-  panel.innerHTML = data
-    .map(a => `<p>${a.subject} – ${a.time}</p>`)
-    .join("");
+  if (!bell || !panel) return;
+
+  bell.innerText = data.length;
+  panel.innerHTML = data.map(a =>
+    `<p>${a.subject} – ${a.date} ${a.time}</p>`
+  ).join("");
 }
 
 setInterval(() => {
   const now = Date.now();
   const data = JSON.parse(localStorage.getItem("appointments")) || [];
-  let changed = false;
 
   data.forEach(a => {
     if (!a.notified && now >= a.notifyAt) {
       alert("🔔 " + a.subject);
       a.notified = true;
-      changed = true;
     }
   });
 
-  if (changed) {
-    localStorage.setItem("appointments", JSON.stringify(data));
-  }
+  localStorage.setItem("appointments", JSON.stringify(data));
 }, 60000);
 
 function approve(btn) {
-  if (!btn) return;
-  const parent = btn.parentElement;
-  parent.classList.add("fade-out");
-  setTimeout(() => (parent.innerHTML = "Approved"), 300);
+  btn.parentElement.classList.add("fade-out");
+  setTimeout(() => btn.parentElement.innerHTML = "Approved", 300);
 }
 
 function reject(btn) {
-  if (!btn) return;
-  const parent = btn.parentElement;
-  parent.classList.add("fade-out");
-  setTimeout(() => (parent.innerHTML = "Rejected"), 300);
+  btn.parentElement.classList.add("fade-out");
+  setTimeout(() => btn.parentElement.innerHTML = "Rejected", 300);
 }
