@@ -2,7 +2,7 @@
   "name": "Appointment Scheduler",
   "short_name": "Scheduler",
   "start_url": "/index.html",
-  "display": "fullscreen",
+  "display": "browser",
   "background_color": "#f2f5fb",
   "theme_color": "#4a6cff",
   "icons": [
@@ -18,4 +18,5 @@
     }
   ]
 }
+
 
