@@ -7,6 +7,10 @@
 </head>
 <body>
 
+<header class="app-header">
+  Appointment Scheduler
+</header>
+
 <div id="loading-screen">
   <div class="loader"></div>
   <p>Loading Appointment Scheduler...</p>
@@ -16,8 +20,8 @@
   <div class="card">
     <h2>Login</h2>
 
-    <label>Select Role</label>
-    <select id="role">
+    <label for="role">Select Role</label>
+    <select id="role" name="role">
       <option value="">Select</option>
       <option value="student">Student</option>
       <option value="staff">Staff</option>
@@ -30,8 +34,10 @@
 
 <script src="app.js"></script>
 <script>
-window.onload = () =>
-  document.getElementById("loading-screen").style.display = "none";
+window.onload = () => {
+  const loader = document.getElementById("loading-screen");
+  if (loader) loader.style.display = "none";
+};
 </script>
 
 </body>
