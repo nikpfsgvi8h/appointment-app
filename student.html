@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Student</title>
+  <title>HOD Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -9,14 +9,13 @@
 
 <div id="loading-screen">
   <div class="loader"></div>
-  <p>Loading...</p>
+  <p>Loading HOD Dashboard...</p>
 </div>
 
-<header class="app-header">Student Dashboard</header>
+<header class="app-header">HOD Dashboard</header>
 
 <main class="page">
   <div class="card">
-
     <h2>Book Appointment</h2>
 
     <label>Subject</label>
@@ -28,35 +27,37 @@
     <label>Time</label>
     <input type="time" id="time">
 
-    <label>Schedule With</label>
+    <label>Book With</label>
     <select id="with">
-      <option value="">Select</option>
       <option value="staff">Staff</option>
-      <option value="hod">HOD</option>
     </select>
 
-    <button onclick="bookAppointment('student')">Book</button>
+    <button onclick="bookAppointment()">Book Appointment</button>
     <p id="msg"></p>
 
     <h2>Calendar</h2>
     <div id="calendarGrid" class="calendar-grid"></div>
 
+    <h2>Pending Requests</h2>
+    <div class="action-buttons">
+      <button onclick="approve(this)">Approve</button>
+      <button onclick="reject(this)">Reject</button>
+    </div>
   </div>
 </main>
 
-<div class="bell" onclick="toggleReminder()">
-  🔔<span id="bell-count">0</span>
-</div>
-
+<div class="bell" onclick="toggleReminder()">🔔<span id="bell-count">0</span></div>
 <div class="reminder-panel" id="reminderPanel"></div>
 
 <script src="app.js"></script>
 <script>
-checkAuth("student");
-loadCalendarGrid();
-loadReminders();
-window.onload = () =>
+window.onload = () => {
+  checkAuth("student");
+  loadCalendarGrid();
+  loadReminders();
   document.getElementById("loading-screen").style.display = "none";
+};
+
 </script>
 
 </body>
