@@ -5,26 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- LOADING SCREEN -->
 <div id="loading-screen">
   <div class="loader"></div>
   <p>Loading HOD Dashboard...</p>
 </div>
 
-<header class="app-header">
-  HOD Dashboard
-</header>
+<header class="app-header">HOD Dashboard</header>
 
 <main class="page">
   <div class="card">
-
     <h2>Book Appointment</h2>
 
     <label>Subject</label>
-    <input type="text" id="subject">
+    <input id="subject">
 
     <label>Date</label>
     <input type="date" id="date">
@@ -34,41 +29,32 @@
 
     <label>Book With</label>
     <select id="with">
-      <option value="">Select</option>
       <option value="staff">Staff</option>
     </select>
 
-    <button onclick="bookAppointment('hod')">Book Appointment</button>
+    <button onclick="bookAppointment()">Book Appointment</button>
     <p id="msg"></p>
 
-    <h2 style="margin-top:24px;">Calendar</h2>
+    <h2>Calendar</h2>
     <div id="calendarGrid" class="calendar-grid"></div>
 
-    <h2 style="margin-top:24px;">Pending Requests</h2>
-
+    <h2>Pending Requests</h2>
     <div class="action-buttons">
       <button onclick="approve(this)">Approve</button>
       <button onclick="reject(this)">Reject</button>
     </div>
-
   </div>
 </main>
 
-<!-- NOTIFICATION BELL -->
-<div class="bell" onclick="toggleReminder()">
-  🔔<span id="bell-count">0</span>
-</div>
-
-<!-- REMINDER PANEL -->
+<div class="bell" onclick="toggleReminder()">🔔<span id="bell-count">0</span></div>
 <div class="reminder-panel" id="reminderPanel"></div>
 
 <script src="app.js"></script>
 <script>
-checkAuth("hod");
-loadCalendarGrid();
-loadReminders();
-
 window.onload = () => {
+  checkAuth("hod");
+  loadCalendarGrid();
+  loadReminders();
   document.getElementById("loading-screen").style.display = "none";
 };
 </script>
