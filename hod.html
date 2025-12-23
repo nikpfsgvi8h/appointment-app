@@ -39,6 +39,9 @@
 
     <h2>Calendar</h2>
     <div id="calendarGrid" class="calendar-grid"></div>
+<h2 style="margin-top:24px;">Pending Requests</h2>
+<div id="pendingRequests"></div>
+
 
     <h2>Pending Requests</h2>
     <div class="action-buttons">
@@ -60,7 +63,10 @@
 window.onload = () => {
   checkAuth("hod");
   loadCalendarGrid();
+
   loadReminders();
+loadPendingRequests();
+
   document.getElementById("loading-screen").style.display = "none";
 };
 </script>
