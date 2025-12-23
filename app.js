@@ -34,6 +34,16 @@ function bookAppointment() {
   const subject = document.getElementById("subject").value;
   const date = document.getElementById("date").value;
   const time = document.getElementById("time").value;
+const role = localStorage.getItem("role");
+
+if (
+  (role === "staff" && withWhom !== "hod") ||
+  (role === "hod" && withWhom !== "staff")
+) {
+  alert("Invalid booking target");
+  return;
+}
+
   const withWhom = document.getElementById("with")?.value || "";
 
   if (!subject || !date || !time) {
